@@ -10,93 +10,257 @@
 </head>
 
 <body>
-    <div id='app'>
-        <div class="header"></div>
-        <div class="tab"></div>
-        <div class="title">
-            <div class="slider">
-                <ul>
-                    <li v-for="(image, index) in visibleImages" :key="index">
-                        <img :src="image" alt="Slider Image">
-                    </li>
-                </ul>
+    <div class="header"></div>
+    <div class="tab"></div>
+    <div class="title">
+        <div class="slideshow-container">
+            <div class="mySlides active">
+                <img src="./assets/photo-img@2x.png" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <img src="./assets/head-background@2x.png" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <img src="./assets/photo-img@2x.png" style="width:100%">
+            </div>
+            <!-- 指示点 -->
+            <div class="dot-area">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+        <div class="slider-right">
+            <div class="slider-right-title">
+                <div class="flex">
+                    <div onclick="changeActive(event, 'slider-right-tab1')"
+                        class="slider-right-title-item slider-right-title-item-active">贸促动态</div>
+                    <div onclick="changeActive(event, 'slider-right-tab2')" class="slider-right-title-item">通知公告
+                    </div>
+                </div>
+                <div class="more-text">更多></div>
+            </div>
+            <!-- 标签页内容 -->
+            <div id="slider-right-tab1" class="slider-right-text" style="display:block;"></div>
+            <div id="slider-right-tab2" class="slider-right-text" style="display:none;">
+                <h3>标签页2内容</h3>
+                <p>这是标签页2的内容。</p>
             </div>
         </div>
     </div>
+    <div class="banner-1">增强信息安全意识 筑牢网络安全防线</div>
 </body>
 
 <script>
-    new Vue({
-        el: '#app',
-        data() {
-            return {
-                imgList: ['https://res.vmallres.com/uomcdn/CN/cms/2023-12/30cb56c54b6f45e1a52d8a7748e43524.jpg',
-                    'https://res.vmallres.com/uomcdn/CN/cms/2023-12/95919b09514c4c29a432eb2085a56735.jpg',
-                    'https://res.vmallres.com/cmscdn/CN/2023-11/35e43ef9d3b743358204febb3ffb3768.jpg'
-                ],
-                currentImageIndex: 0,
-            }
-        },
-        computed: {
-            visibleImages() {
-                const firstIndex = this.currentImageIndex;
-                const secondIndex = (this.currentImageIndex + 1) % this.imgList.length;
-                const thirdIndex = (this.currentImageIndex + 2) % this.imgList.length;
-                return [this.imgList[firstIndex], this.imgList[secondIndex], this.imgList[thirdIndex]];
-            }
-        },
-        mounted() {
-            setInterval(() => {
-                this.currentImageIndex = (this.currentImageIndex + 1) % this.imgList.length;
-            }, 3000);
-        },
-        methods: {
-            onClickImg() {
-                console.log(123)
-            },
-        },
-    })
+    let slideIndex = 0;
+    showSlides();
+    getTitles();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // 更新轮播间隔
+    }
+
+    function changeActive(event, tabName) {
+        let tabContent = document.getElementsByClassName("slider-right-text");
+        for (let i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+        let tabs = document.getElementsByClassName("slider-right-title-item");
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].className = tabs[i].className.replace(" slider-right-title-item-active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        event.currentTarget.className += " slider-right-title-item-active";
+    }
+
+    function getTitles() {
+        const url = 'https://jsonplaceholder.typicode.com/posts'
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementsByClassName('slider-right-text')[0];
+                const list = document.createElement('ul');
+                data = data.slice(0, 8);
+                data.forEach(item => {
+                    const listItem = document.createElement('li');
+                    const spanItem = document.createElement('span');
+                    const dateItem = document.createElement('span');
+                    spanItem.textContent = item.title;
+                    dateItem.textContent = "2024-05-14"
+                    listItem.appendChild(spanItem);
+                    listItem.appendChild(dateItem);
+                    list.appendChild(listItem);
+                });
+                container.innerHTML = '';
+                container.appendChild(list);
+            })
+    }
 </script>
 
 <style>
     @import url(./css/web.css) (min-width: 1920px);
 
-    /* 定义基本样式 */
     body {
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
         margin: 0;
         padding: 0;
-    }
-
-    #app {
+        font-size: 14px;
+        line-height: 1.5;
         display: flex;
         flex-direction: column;
         align-items: center;
+        overflow: auto;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
     }
 
     .flex {
         display: flex;
     }
 
-    .slider ul {
-        width: 300%;
-        display: flex;
-        flex-direction: row;
-        transition: transform 0.5s ease;
-    }
-
-    .slider ul li {
-        width: 100%;
+    .title {
+        background: linear-gradient(180deg, #A1D0FE 0%, rgba(158, 207, 255, 0) 100%);
         display: flex;
         justify-content: center;
     }
 
-    img {
+    .slideshow-container {
         width: 585px;
         height: 440px;
+        margin-right: 30px;
+        position: relative;
+    }
+
+    .slideshow-container img {
+        width: 100%;
+        height: 100%;
         object-fit: contain;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .mySlides.active {
+        display: block;
+    }
+
+    .dot-area {
+        position: absolute;
+        right: 20px;
+        bottom: 14px;
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 7px;
+        width: 7px;
+        margin: 0 10px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .dot.active,
+    .dot:hover {
+        width: 12px;
+        height: 12px;
+        background-color: #0089FF;
+    }
+
+    .slider-right {
+        width: 586px;
+        height: 440px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .slider-right-title {
+        margin-bottom: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .more-text {
+        font-family: MicrosoftYaHei;
+        color: #999999;
+        cursor: pointer;
+    }
+
+    .slider-right-title-item {
+        width: 160px;
+        font-family: MicrosoftYaHei, MicrosoftYaHei;
+        font-weight: bold;
+        font-size: 20px;
+        color: #333333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .slider-right-title-item-active {
+        width: 160px;
+        height: 46px;
+        background: #1A5BBE;
+        border-radius: 23px;
+        font-weight: bold;
+        color: #FFFFFF;
+    }
+
+    .slider-right-text li {
+        margin-bottom: 22px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .slider-right-text li span:first-child {
+        display: block;
+        width: 420px;
+        font-size: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .slider-right-text li span:last-child {
+        font-family: MicrosoftYaHei;
+        color: #B7B7B7;
+    }
+
+    .banner-1 {
+        width: 1200px;
+        height: 100px;
+        margin-top: 40px;
+        background: #1199FD;
+        color: #FFF;
+        font-family: FZLTDHJW--GB1, FZLTDHJW--GB1;
+        font-size: 44px;
+        font-weight: 600;
+        letter-spacing: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
 
