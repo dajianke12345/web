@@ -6,13 +6,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- 必须先引入vue，  后使用element-ui -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <!--引入 element-ui 的样式，-->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入element 的组件库-->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 </head>
 
 <body>
-    <div class="header"></div>
+    <div id='app'>
+        <div class="header"></div>
+        <div class="tab"></div>
+        <div class="title">
+            <el-carousel :autoplay="false" indicator-position="outside" height="440px" arrow="always">
+                <el-carousel-item v-for="(item, index) in imgList" :key="index">
+                    <img :src="item" class="photo-img" @click="onClickImg" />
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+    </div>
 </body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                imgList: ['./assets/photo-img@2x.png'],
+            }
+        },
+        methods: {
+            onClickImg() {
+                console.log(123)
+            },
+        },
+    })
+</script>
+
 <style>
-    @import url(./css/body.css) (max-width: 500px);
+    @import url(./css/web.css) (min-width: 1920px);
+
     /* 定义基本样式 */
     body {
         font-family: Arial, sans-serif;
@@ -20,9 +54,20 @@
         line-height: 1.5;
         margin: 0;
         padding: 0;
-        .header {
+    }
 
-        }
+    #app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    >>> .el-carousel {
+      flex-shrink: 0;
     }
 </style>
 
