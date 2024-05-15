@@ -25,7 +25,6 @@
             <div class="mySlides">
                 <img src="./assets/photo-img@2x.png" style="width:100%">
             </div>
-            <!-- 指示点 -->
             <div class="dot-area">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -35,14 +34,14 @@
         <div class="slider-right">
             <div class="slider-right-title">
                 <div class="flex">
-                    <div onclick="changeActive(event, 'slider-right-tab1')"
+                    <div onclick="changeActive(event, 'slider-right-tab1', 'slider-right')"
                         class="slider-right-title-item slider-right-title-item-active">贸促动态</div>
-                    <div onclick="changeActive(event, 'slider-right-tab2')" class="slider-right-title-item">通知公告
+                    <div onclick="changeActive(event, 'slider-right-tab2', 'slider-right')"
+                        class="slider-right-title-item">通知公告
                     </div>
                 </div>
                 <div class="more-text">更多></div>
             </div>
-            <!-- 标签页内容 -->
             <div id="slider-right-tab1" class="slider-right-text" style="display:block;"></div>
             <div id="slider-right-tab2" class="slider-right-text" style="display:none;">
                 <h3>标签页2内容</h3>
@@ -51,12 +50,110 @@
         </div>
     </div>
     <div class="banner-1">增强信息安全意识 筑牢网络安全防线</div>
+    <div class="service">
+        <div class="service-left">
+            <div class="service-left-title">
+                <div onclick="changeActive(event, 'service-left-tab1', 'service-left')"
+                    class="service-left-title-item service-left-title-item-active">贸易投资</div>
+                <div onclick="changeActive(event, 'service-left-tab2', 'service-left')" class="service-left-title-item">
+                    国际联络
+                </div>
+                <div onclick="changeActive(event, 'service-left-tab3', 'service-left')" class="service-left-title-item">
+                    会展促进
+                </div>
+                <div onclick="changeActive(event, 'service-left-tab4', 'service-left')" class="service-left-title-item">
+                    商法服务
+                </div>
+                <div onclick="changeActive(event, 'service-left-tab5', 'service-left')" class="service-left-title-item">
+                    应用智库
+                </div>
+            </div>
+            <div id="service-left-tab1" class="service-left-content" style="display:block;">
+                <div class="service-left-content-item">
+                    <div class="service-left-content-item-left">
+                        <div class="service-left-content-item-left-icon-one"></div>
+                        <div class="service-left-content-item-left-title">经贸预警</div>
+                    </div>
+                    <div class="service-left-content-item-line"></div>
+                    <div class="service-left-content-item-right">11111111111111111111</div>
+                </div>
+            </div>
+            <div id="service-left-tab2" class="service-left-content" style="display:none;">
+                <h3>标签页2内容</h3>
+                <p>这是标签页2的内容。</p>
+            </div>
+            <div id="service-left-tab3" class="service-left-content" style="display:none;">
+                <h3>标签页3内容</h3>
+                <p>这是标签页3的内容。</p>
+            </div>
+            <div id="service-left-tab4" class="service-left-content" style="display:none;">
+                <h3>标签页4内容</h3>
+                <p>这是标签页4的内容。</p>
+            </div>
+            <div id="service-left-tab5" class="service-left-content" style="display:none;">
+                <h3>标签页5内容</h3>
+                <p>这是标签页5的内容。</p>
+            </div>
+        </div>
+        <div class="service-right">
+            <div class="title-row service-right-title">
+                <div class="title-row-left">
+                    <div class="title-row-left-icon service-right-title-left-icon"></div>
+                    <div class="title-row-left-text">办事服务</div>
+                </div>
+                <div class="more-text">更多></div>
+            </div>
+            <div class="blue-line"></div>
+            <div class="service-right-content">
+                <div class="service-right-content-item">
+                    <div class="service-right-content-item-icon service-right-content-item-icon-one"></div>
+                    <div class="service-right-content-item-text">房地产证书</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="banner-area">
+        <div class="banner banner-2"></div>
+        <div class="banner banner-3"></div>
+        <div class="banner banner-4"></div>
+        <div class="banner banner-5"></div>
+    </div>
+    <div class="flex">
+        <div class="message-public">
+            <div class="title-row message-public-title">
+                <div class="title-row-left">
+                    <div class="title-row-left-icon message-public-title-left-icon"></div>
+                    <div class="title-row-left-text">信息公开</div>
+                </div>
+                <div class="more-text">更多></div>
+            </div>
+            <div class="message-public-item">
+                <div class="message-public-item-icon message-public-item-icon-one"></div>
+                <div class="flex-column">
+                    <div class="message-public-item-line"></div>
+                    <div class="message-public-item-text">机构职能</div>
+                </div>
+            </div>
+        </div>
+        <div class="party-build">
+            <div class="title-row party-build-title">
+                <div class="title-row-left">
+                    <div class="title-row-left-icon party-build-title-left-icon"></div>
+                    <div class="title-row-left-text">办事服务</div>
+                </div>
+                <div class="more-text">更多></div>
+            </div>
+            <div class="blue-line"></div>
+            <div class="party-build-content"></div>
+        </div>
+    </div>
 </body>
 
 <script>
     let slideIndex = 0;
     showSlides();
     getTitles();
+    getPartyTitles();
 
     function showSlides() {
         let i;
@@ -75,17 +172,17 @@
         setTimeout(showSlides, 2000); // 更新轮播间隔
     }
 
-    function changeActive(event, tabName) {
-        let tabContent = document.getElementsByClassName("slider-right-text");
+    function changeActive(event, tabName, className) {
+        let tabContent = document.getElementsByClassName(`${className}-text`);
         for (let i = 0; i < tabContent.length; i++) {
             tabContent[i].style.display = "none";
         }
-        let tabs = document.getElementsByClassName("slider-right-title-item");
+        let tabs = document.getElementsByClassName(`${className}-title-item`);
         for (let i = 0; i < tabs.length; i++) {
-            tabs[i].className = tabs[i].className.replace(" slider-right-title-item-active", "");
+            tabs[i].className = tabs[i].className.replace(` ${className}-title-item-active`, "");
         }
         document.getElementById(tabName).style.display = "block";
-        event.currentTarget.className += " slider-right-title-item-active";
+        event.currentTarget.className += ` ${className}-title-item-active`;
     }
 
     function getTitles() {
@@ -110,6 +207,29 @@
                 container.appendChild(list);
             })
     }
+
+    function getPartyTitles() {
+        const url = 'https://jsonplaceholder.typicode.com/posts'
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementsByClassName('party-build-content')[0];
+                const list = document.createElement('ul');
+                data = data.slice(0, 4);
+                data.forEach(item => {
+                    const listItem = document.createElement('li');
+                    const spanItem = document.createElement('span');
+                    const dateItem = document.createElement('span');
+                    spanItem.textContent = item.title;
+                    dateItem.textContent = "2024-05-14"
+                    listItem.appendChild(spanItem);
+                    listItem.appendChild(dateItem);
+                    list.appendChild(listItem);
+                });
+                container.innerHTML = '';
+                container.appendChild(list);
+            })
+    }
 </script>
 
 <style>
@@ -118,7 +238,9 @@
     body {
         margin: 0;
         padding: 0;
+        color: #333333;
         font-size: 14px;
+        font-family: MicrosoftYaHei;
         line-height: 1.5;
         display: flex;
         flex-direction: column;
@@ -134,6 +256,11 @@
 
     .flex {
         display: flex;
+    }
+
+    .flex-column {
+        display: flex;
+        flex-direction: column;
     }
 
     .title {
@@ -202,17 +329,14 @@
     }
 
     .more-text {
-        font-family: MicrosoftYaHei;
         color: #999999;
         cursor: pointer;
     }
 
     .slider-right-title-item {
         width: 160px;
-        font-family: MicrosoftYaHei, MicrosoftYaHei;
         font-weight: bold;
         font-size: 20px;
-        color: #333333;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -228,13 +352,17 @@
         color: #FFFFFF;
     }
 
-    .slider-right-text li {
-        margin-bottom: 22px;
+    li {
+        margin-bottom: 12px;
         display: flex;
         justify-content: space-between;
     }
 
-    .slider-right-text li span:first-child {
+    .slider-right-text li {
+        margin-bottom: 22px;
+    }
+
+    li span:first-child {
         display: block;
         width: 420px;
         font-size: 18px;
@@ -243,15 +371,14 @@
         white-space: nowrap;
     }
 
-    .slider-right-text li span:last-child {
-        font-family: MicrosoftYaHei;
+    li span:last-child {
         color: #B7B7B7;
     }
 
     .banner-1 {
         width: 1200px;
         height: 100px;
-        margin-top: 40px;
+        margin: 40px 0;
         background: #1199FD;
         color: #FFF;
         font-family: FZLTDHJW--GB1, FZLTDHJW--GB1;
@@ -261,6 +388,252 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .service {
+        margin-bottom: 40px;
+        display: flex;
+    }
+
+    .service-left {
+        margin-right: 27px;
+    }
+
+    .service-left-title {
+        margin-bottom: 23px;
+        display: flex;
+        align-items: center;
+    }
+
+    .service-left-title-item {
+        width: 120px;
+        font-weight: bold;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .service-left-title-item-active {
+        width: 120px;
+        height: 46px;
+        background: #1A5BBE;
+        border-radius: 23px;
+        font-weight: bold;
+        color: #FFFFFF;
+    }
+
+    .service-left-content {
+        width: 780px;
+        height: 371px;
+        padding: 20px;
+        background: #E9F3FF;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .service-left-content-item {
+        width: 233px;
+        height: 157px;
+        padding: 26px 5px 27px 19px;
+        box-sizing: border-box;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 6px 0px #E8E8E8;
+        border-radius: 4px;
+        display: flex;
+    }
+
+    .service-left-content-item-left {
+        width: 72px;
+        margin-right: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-left-content-item-left-icon-one {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 14px;
+        border-radius: 50%;
+        background: #6AA9EC;
+        background-size: 100%;
+    }
+
+    .service-left-content-item-left-title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .service-left-content-item-line {
+        width: 1px;
+        height: 104px;
+        margin-right: 5px;
+        border-left: 1px solid #979797;
+        opacity: 0.3;
+    }
+
+    .service-left-content-item-right {
+        width: 115px;
+        padding-top: 5px;
+        color: #9B9B9B;
+        line-height: 24px;
+        word-break: break-all;
+    }
+
+    .service-right {
+        width: 394px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .title-row {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .service-right-title {
+        margin-bottom: 13px;
+    }
+
+    .title-row-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .title-row-left-icon {
+        width: 40px;
+        height: 34px;
+        margin-right: 9px;
+    }
+
+    .service-right-title-left-icon {
+        background: url("./assets/head-background@2x.png");
+        background-size: 100%;
+    }
+
+    .title-row-left-text {
+        font-size: 24px;
+        color: #1A5BBE;
+        line-height: 31px;
+    }
+
+    .blue-line {
+        width: 100%;
+        height: 2px;
+        margin-bottom: 20px;
+        background: #1A5BBE;
+    }
+
+    .service-right-content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .service-right-content-item {
+        width: 187px;
+        height: 113px;
+        padding-top: 23px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        background: #E9F3FF;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-right-content-item-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .service-right-content-item-icon-one {
+        background: url("./assets/head-background@2x.png");
+        background-size: 100%;
+    }
+
+    .service-right-content-item-text {
+        margin-top: 6px;
+        line-height: 19px;
+    }
+
+    .banner-area {
+        margin-bottom: 42px;
+        display: flex;
+    }
+
+    .banner {
+        width: 285px;
+        height: 99px;
+        margin-right: 20px;
+        background: #6AA9EC;
+    }
+
+    .banner:last-child {
+        margin-right: 0;
+    }
+
+    .message-public {
+        width: 584px;
+        margin-right: 31px;
+    }
+
+    .message-public-title {
+        margin-bottom: 17px;
+    }
+
+    .message-public-title-left-icon {
+        background: url("./assets/head-background@2x.png");
+        background-size: 100%;
+    }
+
+    .message-public-item {
+        width: 188px;
+        height: 74px;
+        padding: 20px 57px 21px 27px;
+        box-sizing: border-box;
+        background: #F2F2F2;
+        border-radius: 4px;
+        display: flex;
+    }
+
+    .message-public-item-icon {
+        width: 33px;
+        height: 33px;
+        margin-right: 15px;
+    }
+
+    .message-public-item-icon-one {
+        background: url("./assets/head-background@2x.png");
+        background-size: 100%;
+    }
+
+    .message-public-item-line {
+        width: 22px;
+        height: 2px;
+        margin-bottom: 6px;
+        background: #C9C9C9;
+    }
+
+    .message-public-item-text {
+        line-height: 19px;
+    }
+
+    .party-build {
+        width: 585px;
+    }
+
+    .party-build-title {
+        margin-bottom: 15px;
+    }
+
+    .party-build-title-left-icon {
+        background: url("./assets/head-background@2x.png");
+        background-size: 100%;
     }
 </style>
 
