@@ -10,7 +10,20 @@
 </head>
 
 <body>
-    <div class="header"></div>
+    <div class="header">
+        <div class="header-left">
+            <div id="header-date" class="header-text"></div>
+            <div class="header-left-line"></div>
+            <div id="header-day" class="header-text"></div>
+        </div>
+        <div class="header-right">
+            <form id="searchForm" action="/search" method="get">
+                <input class="search-input" type="text" name="query" placeholder="请输入要搜索的内容">
+                <input class="search-button" type="submit" value=" ">
+            </form>
+            <div class="header-text pointer">English</div>
+        </div>
+    </div>
     <div class="tab">
         <div onclick="changeActive(event, 'tab-tab1', 'tab')" class="tab-title-item tab-title-item-active">贸易投资</div>
         <div onclick="changeActive(event, 'tab-tab2', 'tab')" class="tab-title-item">国际联络
@@ -351,11 +364,25 @@
 </body>
 
 <script>
+    getDate();
     let slideIndex = 0;
     showSlides();
     getTitles();
     getPartyTitles();
     getMediaAttentionTitles();
+
+    function getDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1;
+        const day = today.getDate();
+        const dateEle = document.getElementById("header-date");
+        dateEle.innerText = `${year}年${month}月${day}日`;
+        const dayEle = document.getElementById("header-day");
+        const week = today.getDay();
+        const arr = ["一", "二", "三", "四", "五", "六", "日"];
+        dayEle.innerText = `星期${arr[week]}`;
+    }
 
     function showSlides() {
         let i;
@@ -488,11 +515,66 @@
         flex-direction: column;
     }
 
+    .pointer {
+        cursor: pointer;
+    }
+
     .header {
         width: 100%;
         aspect-ratio: 1920 / 400;
         background: url("./assets/head-background@2x.png");
         background-size: 100%;
+    }
+
+    .header-left {
+        position: absolute;
+        top: 26px;
+        left: 360px;
+        display: flex;
+        align-items: center;
+    }
+
+    .header-text {
+        font-size: 16px;
+        color: #3F83C4;
+    }
+
+    .header-left-line {
+        width: 1px;
+        height: 13px;
+        margin: 0 11px 0 9px;
+        border: 1px solid #DFD9D9;
+    }
+
+    .header-right {
+        position: absolute;
+        top: 26px;
+        right: 360px;
+        display: flex;
+        align-items: center;
+    }
+
+    .search-input {
+        width: 260px;
+        height: 35px;
+        padding-left: 21px;
+        box-sizing: border-box;
+        border-radius: 0 0 5px 5px;
+        border: 1px solid #DEE0E5;
+    }
+
+    .search-button {
+        width: 61px;
+        height: 39px;
+        margin: 0 38px 0 -4px;
+        border: none;
+        border-radius: 0px 5px 5px 0px;
+        background: #0089FF;
+        background-image: url("./assets/search-icon@2x.png");
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
     }
 
     .tab {
@@ -843,22 +925,27 @@
         background: url("./assets/service-right-content-icon-one@2x.png");
         background-size: 100%;
     }
+
     .service-right-content-item-icon-two {
         background: url("./assets/service-right-content-icon-two@2x.png");
         background-size: 100%;
     }
+
     .service-right-content-item-icon-three {
         background: url("./assets/service-right-content-icon-three@2x.png");
         background-size: 100%;
     }
+
     .service-right-content-item-icon-four {
         background: url("./assets/service-right-content-icon-four@2x.png");
         background-size: 100%;
     }
+
     .service-right-content-item-icon-five {
         background: url("./assets/service-right-content-icon-five@2x.png");
         background-size: 100%;
     }
+
     .service-right-content-item-icon-six {
         background: url("./assets/service-right-content-icon-six@2x.png");
         background-size: 100%;
@@ -935,22 +1022,27 @@
         background: url("./assets/public-message-icon-one@2x.png");
         background-size: 100%;
     }
+
     .message-public-item-icon-two {
         background: url("./assets/public-message-icon-two@2x.png");
         background-size: 100%;
     }
+
     .message-public-item-icon-three {
         background: url("./assets/public-message-icon-three@2x.png");
         background-size: 100%;
     }
+
     .message-public-item-icon-four {
         background: url("./assets/public-message-icon-four@2x.png");
         background-size: 100%;
     }
+
     .message-public-item-icon-five {
         background: url("./assets/public-message-icon-five@2x.png");
         background-size: 100%;
     }
+
     .message-public-item-icon-six {
         background: url("./assets/public-message-icon-six@2x.png");
         background-size: 100%;
