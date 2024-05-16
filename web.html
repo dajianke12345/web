@@ -41,21 +41,21 @@
         <div class="tab-content-flex">
             <div class="title">
                 <div class="slideshow-container">
-                    <div class="my-slides active">
+                    <div class="my-slides my-slides-one active">
                         <img src="./assets/photo-img@2x.png" style="width:100%">
                     </div>
 
-                    <div class="my-slides">
+                    <div class="my-slides my-slides-one">
                         <img src="./assets/head-background@2x.png" style="width:100%">
                     </div>
 
-                    <div class="my-slides">
+                    <div class="my-slides my-slides-one">
                         <img src="./assets/photo-img@2x.png" style="width:100%">
                     </div>
                     <div class="dot-area">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
+                        <span class="dot dot-one active"></span>
+                        <span class="dot dot-one"></span>
+                        <span class="dot dot-one"></span>
                     </div>
                 </div>
                 <div class="slider-right">
@@ -219,21 +219,21 @@
                     </div>
                     <div id="service-left-tab5" class="service-left-content" style="display:none;">
                         <div class="service-left-slideshow-container">
-                            <div class="my-slides active">
+                            <div class="my-slides my-slides-two active">
                                 <img src="./assets/photo-img@2x.png" style="width:100%">
                             </div>
 
-                            <div class="my-slides">
+                            <div class="my-slides my-slides-two">
                                 <img src="./assets/head-background@2x.png" style="width:100%">
                             </div>
 
-                            <div class="my-slides">
+                            <div class="my-slides my-slides-two">
                                 <img src="./assets/photo-img@2x.png" style="width:100%">
                             </div>
                             <div class="dot-area">
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                                <span class="dot"></span>
+                                <span class="dot dot-two active"></span>
+                                <span class="dot dot-two"></span>
+                                <span class="dot dot-two"></span>
                             </div>
                         </div>
                     </div>
@@ -435,8 +435,10 @@
 
 <script>
     getDate();
-    let slideIndex = 0;
-    showSlides();
+    let slideOneIndex = 0;
+    showSlidesOne();
+    let slideTwoIndex = 0;
+    showSlidesTwo();
     getTitles();
     getInternationalContactTitles();
     getPartyTitles();
@@ -455,21 +457,38 @@
         dayEle.innerText = `星期${arr[week]}`;
     }
 
-    function showSlides() {
+    function showSlidesOne() {
         let i;
-        let slides = document.getElementsByClassName("my-slides");
-        let dots = document.getElementsByClassName("dot");
+        let slides = document.getElementsByClassName("my-slides-one");
+        let dots = document.getElementsByClassName("dot-one");
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
-        slideIndex++;
-        if (slideIndex > slides.length) { slideIndex = 1 }
+        slideOneIndex++;
+        if (slideOneIndex > slides.length) { slideOneIndex = 1 }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
         }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        setTimeout(showSlides, 2000); // 更新轮播间隔
+        slides[slideOneIndex - 1].style.display = "block";
+        dots[slideOneIndex - 1].className += " active";
+        setTimeout(showSlidesOne, 2000); // 更新轮播间隔
+    }
+
+    function showSlidesTwo() {
+        let i;
+        let slides = document.getElementsByClassName("my-slides-two");
+        let dots = document.getElementsByClassName("dot-two");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideTwoIndex++;
+        if (slideTwoIndex > slides.length) { slideTwoIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideTwoIndex - 1].style.display = "block";
+        dots[slideTwoIndex - 1].className += " active";
+        setTimeout(showSlidesTwo, 2000); // 更新轮播间隔
     }
 
     function changeActive(event, tabName, className) {
@@ -729,28 +748,38 @@
 
     .tab-content-flex {
         width: 100%;
+        background: linear-gradient(180deg, #A1D0FE 0%, rgba(158, 207, 255, 0) 100%) no-repeat;
+        background-size: 100% 480px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
+    @media (max-width: 1200px) {
+        .tab-content-flex {
+            padding: 0 12px;
+            box-sizing: border-box;
+        }
+    }
+
     .title {
         width: 100%;
         padding-top: 40px;
-        background: linear-gradient(180deg, #A1D0FE 0%, rgba(158, 207, 255, 0) 100%);
         display: flex;
         justify-content: center;
     }
 
     @media (max-width: 1200px) {
         .title {
+            padding-top: 20px;
             flex-direction: column;
         }
     }
 
     .slideshow-container {
         max-width: 585px;
-        height: 440px;
+        min-height: 264px;
+        aspect-ratio: 585 / 440;
         margin-right: 30px;
         position: relative;
     }
@@ -758,6 +787,7 @@
     @media (max-width: 1200px) {
         .slideshow-container {
             margin-right: 0;
+            margin-bottom: 12px;
         }
     }
 
@@ -772,7 +802,6 @@
     }
 
     .my-slides.active {
-        height: 100%;
         display: block;
     }
 
@@ -801,8 +830,8 @@
     }
 
     .slider-right {
-        width: 586px;
-        height: 440px;
+        max-width: 586px;
+        max-height: 440px;
         display: flex;
         flex-direction: column;
     }
@@ -829,6 +858,12 @@
         cursor: pointer;
     }
 
+    @media (max-width: 1200px) {
+        .slider-right-title-item {
+            width: 120px;
+        }
+    }
+
     .slider-right-title-item-active {
         width: 160px;
         height: 46px;
@@ -836,6 +871,12 @@
         border-radius: 23px;
         font-weight: bold;
         color: #FFFFFF;
+    }
+
+    @media (max-width: 1200px) {
+        .slider-right-title-item-active {
+            width: 120px;
+        }
     }
 
     li {
@@ -858,13 +899,32 @@
         white-space: nowrap;
     }
 
+    @media (max-width: 600px) {
+        li span:first-child {
+            width: 340px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        li span:first-child {
+            width: 300px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        li span:first-child {
+            width: 260px;
+        }
+    }
+
     li span:last-child {
         color: #B7B7B7;
     }
 
     .banner-1 {
-        width: 1200px;
-        height: 100px;
+        width: 100%;
+        max-width: 1200px;
+        aspect-ratio: 1200 / 100;
         margin: 40px 0;
         background: #1199FD;
         color: #FFF;
@@ -877,13 +937,40 @@
         align-items: center;
     }
 
+    @media (max-width: 1200px) {
+        .banner-1 {
+            margin: 30px 0;
+            font-size: 30px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .banner-1 {
+            margin: 20px 0;
+            font-size: 16px;
+        }
+    }
+
     .service {
         margin-bottom: 40px;
         display: flex;
     }
 
+    @media (max-width: 1200px) {
+        .service {
+            width: 100%;
+            flex-direction: column;
+        }
+    }
+
     .service-left {
         margin-right: 27px;
+    }
+
+    @media (max-width: 1200px) {
+        .service-left {
+            margin-right: 0;
+        }
     }
 
     .service-left-title {
@@ -902,6 +989,13 @@
         cursor: pointer;
     }
 
+    @media (max-width: 1200px) {
+        .service-left-title-item {
+            width: 100px;
+            font-size: 14px;
+        }
+    }
+
     .service-left-title-item-active {
         width: 120px;
         height: 46px;
@@ -911,12 +1005,25 @@
         color: #FFFFFF;
     }
 
+    @media (max-width: 1200px) {
+        .service-left-title-item-active {
+            width: 100px;
+            font-size: 14px;
+        }
+    }
+
     .service-left-content {
         width: 780px;
-        height: 371px;
-        padding: 20px;
+        min-height: 216px;
+        padding: 20px 0 0 20px;
         box-sizing: border-box;
         background: #E9F3FF;
+    }
+
+    @media (max-width: 1200px) {
+        .service-left-content {
+            width: 100%;
+        }
     }
 
     .service-left-tab-content-item-title {
@@ -928,10 +1035,36 @@
         width: 233px;
         height: 331px;
         padding: 40px 21px 40px 24px;
+        margin-right: 20px;
+        margin-bottom: 20px;
         box-sizing: border-box;
         background: #FFFFFF;
         box-shadow: 0px 0px 6px 0px #E8E8E8;
         border-radius: 4px;
+    }
+
+    @media (max-width: 1000px) {
+        .service-left-tab1-content-item {
+            zoom: 0.9;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .service-left-tab1-content-item {
+            zoom: 0.75;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .service-left-tab1-content-item {
+            zoom: 0.6;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .service-left-tab1-content-item {
+            zoom: 0.5;
+        }
     }
 
     .service-left-tab1-content-item-up {
@@ -942,7 +1075,7 @@
 
     .service-left-tab1-content-item-up-icon-one {
         width: 60px;
-        height: 60px;
+        aspect-ratio: 1;
         margin-right: 21px;
         border-radius: 50%;
         background: #6AA9EC;
@@ -950,7 +1083,7 @@
     }
 
     .service-left-tab1-content-item-line {
-        width: 188px;
+        width: 100%;
         height: 2px;
         margin-bottom: 21px;
         border-bottom: 1px solid #979797;
