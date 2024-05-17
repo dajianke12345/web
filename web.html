@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div id="service-left-tab1" class="service-left-content" style="display:block;">
-                        <div class="flex-wrap">
+                        <div class="service-left-content-flex">
                             <div class="service-left-tab1-content-item">
                                 <div class="service-left-tab1-content-item-up">
                                     <div class="service-left-tab1-content-item-up-icon-one"></div>
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                     <div id="service-left-tab3" class="service-left-content" style="display:none;">
-                        <div class="flex-wrap">
+                        <div class="service-left-content-flex">
                             <div class="service-left-tab1-content-item">
                                 <div class="service-left-tab1-content-item-up">
                                     <div class="service-left-tab1-content-item-up-icon-one"></div>
@@ -773,6 +773,7 @@
         .title {
             padding-top: 20px;
             flex-direction: column;
+            align-items: center;
         }
     }
 
@@ -834,6 +835,12 @@
         max-height: 440px;
         display: flex;
         flex-direction: column;
+    }
+    
+    @media (max-width: 1200px) {
+        .slider-right {
+            width: 100%;
+        }
     }
 
     .slider-right-title {
@@ -960,6 +967,7 @@
         .service {
             width: 100%;
             flex-direction: column;
+            align-items: center;
         }
     }
 
@@ -970,6 +978,7 @@
     @media (max-width: 1200px) {
         .service-left {
             margin-right: 0;
+            margin-bottom: 20px;
         }
     }
 
@@ -1015,15 +1024,21 @@
     .service-left-content {
         width: 780px;
         min-height: 216px;
-        padding: 20px 0 0 20px;
+        padding: 20px;
         box-sizing: border-box;
         background: #E9F3FF;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 820px) {
         .service-left-content {
             width: 100%;
         }
+    }
+
+    .service-left-content-flex {
+        margin-right: -20px;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .service-left-tab-content-item-title {
@@ -1043,27 +1058,27 @@
         border-radius: 4px;
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 568px) {
         .service-left-tab1-content-item {
             zoom: 0.9;
         }
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 516px) {
         .service-left-tab1-content-item {
-            zoom: 0.75;
+            zoom: 0.8;
         }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 450px) {
+        .service-left-tab1-content-item {
+            zoom: 0.7;
+        }
+    }
+
+    @media (max-width: 400px) {
         .service-left-tab1-content-item {
             zoom: 0.6;
-        }
-    }
-
-    @media (max-width: 500px) {
-        .service-left-tab1-content-item {
-            zoom: 0.5;
         }
     }
 
@@ -1099,14 +1114,38 @@
         display: flex;
     }
 
+    @media (max-width: 820px) {
+        .international-contact {
+            flex-direction: column;
+        }
+    }
+
     .international-contact img {
         width: 360px;
         height: 331px;
         margin-right: 20px;
     }
 
+    @media (max-width: 820px) {
+        .international-contact img {
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .international-contact img {
+            width: 100%;
+        }
+    }
+
     .international-contact-right {
         width: 360px;
+    }
+
+    @media (max-width: 400px) {
+        .international-contact-right {
+            width: 100%;
+        }
     }
 
     .international-contact-title {
@@ -1124,12 +1163,19 @@
         width: 233px;
         height: 157px;
         padding: 26px 5px 27px 19px;
+        margin-bottom: 20px;
         box-sizing: border-box;
         background: #FFFFFF;
         box-shadow: 0px 0px 6px 0px #E8E8E8;
         border-radius: 4px;
         display: flex;
         cursor: pointer;
+    }
+
+    @media (max-width: 500px) {
+        .service-left-tab4-content-item {
+            zoom: 0.6;
+        }
     }
 
     .service-left-tab4-content-item:first-child {
@@ -1171,7 +1217,9 @@
 
     .service-left-slideshow-container {
         width: 100%;
-        height: 100%;
+        min-height: 258px;
+        aspect-ratio: 585 / 440;
+        box-sizing: border-box;
         position: relative;
     }
 
@@ -1185,6 +1233,12 @@
         width: 394px;
         display: flex;
         flex-direction: column;
+    }
+
+    @media (max-width: 418px) {
+        .service-right {
+            width: 100%;
+        }
     }
 
     .title-row {
@@ -1247,6 +1301,12 @@
         cursor: pointer;
     }
 
+    @media (max-width: 418px) {
+        .service-right-content-item {
+            width: 150px;
+        }
+    }
+
     .service-right-content-item-icon {
         width: 45px;
         height: 45px;
@@ -1288,20 +1348,20 @@
     }
 
     .banner-area {
-        margin-bottom: 42px;
+        margin-right: -20px;
+        margin-bottom: 22px;
         display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .banner {
         width: 285px;
         height: 99px;
         margin-right: 20px;
+        margin-bottom: 20px;
         background: #6AA9EC;
         cursor: pointer;
-    }
-
-    .banner:last-child {
-        margin-right: 0;
     }
 
     .message-public-row {
@@ -1309,9 +1369,21 @@
         display: flex;
     }
 
+    @media (max-width: 1200px) {
+        .message-public-row {
+            flex-direction: column;
+        }
+    }
+
     .message-public {
         width: 584px;
         margin-right: 31px;
+    }
+
+    @media (max-width: 1200px) {
+        .message-public {
+            margin-bottom: 20px;
+        }
     }
 
     .message-public-title {
@@ -1448,6 +1520,7 @@
     }
 
     .banner-area-two {
+        margin-right: -20px;
         margin-bottom: 29px;
         display: flex;
     }
