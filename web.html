@@ -11,30 +11,35 @@
 
 <body>
     <div class="header">
-        <div class="header-left">
-            <div id="header-date" class="header-text"></div>
-            <div class="header-left-line"></div>
-            <div id="header-day" class="header-text"></div>
-        </div>
-        <div class="header-right">
-            <form id="searchForm" action="/search" method="get">
-                <input class="search-input" type="text" name="query" placeholder="请输入要搜索的内容">
-                <input class="search-button" type="submit" value=" ">
-            </form>
-            <div class="header-text pointer">English</div>
+        <div class="header-content">
+            <div class="header-left">
+                <div id="header-date" class="header-text"></div>
+                <div class="header-left-line"></div>
+                <div id="header-day" class="header-text"></div>
+            </div>
+            <div class="header-right">
+                <form id="searchForm" action="/search" method="get">
+                    <input class="search-input" type="text" name="query" placeholder="请输入要搜索的内容">
+                    <input class="search-button" type="submit" value=" ">
+                </form>
+                <div class="header-text pointer">English</div>
+            </div>
         </div>
     </div>
     <div class="tab">
-        <div onclick="changeActive(event, 'tab-tab1', 'tab')" class="tab-title-item tab-title-item-active">贸易投资</div>
-        <div onclick="changeActive(event, 'tab-tab2', 'tab')" class="tab-title-item">国际联络
-        </div>
-        <div onclick="changeActive(event, 'tab-tab3', 'tab')" class="tab-title-item">会展促进
-        </div>
-        <div onclick="changeActive(event, 'tab-tab4', 'tab')" class="tab-title-item">商法服务
-        </div>
-        <div onclick="changeActive(event, 'tab-tab5', 'tab')" class="tab-title-item">应用智库
-        </div>
-        <div onclick="changeActive(event, 'tab-tab6', 'tab')" class="tab-title-item">办事服务
+        <div class="tab-title-content">
+            <div onclick="changeActive(event, 'tab-tab1', 'tab')" class="tab-title-item tab-title-item-active">贸易投资
+            </div>
+            <div onclick="changeActive(event, 'tab-tab2', 'tab')" class="tab-title-item">国际联络
+            </div>
+            <div onclick="changeActive(event, 'tab-tab3', 'tab')" class="tab-title-item">会展促进
+            </div>
+            <div onclick="changeActive(event, 'tab-tab4', 'tab')" class="tab-title-item">商法服务
+            </div>
+            <div onclick="changeActive(event, 'tab-tab5', 'tab')" class="tab-title-item">应用智库
+            </div>
+            <div onclick="changeActive(event, 'tab-tab6', 'tab')" class="tab-title-item">办事服务
+            </div>
         </div>
     </div>
     <div id="tab-tab1" class="tab-content" style="display:block;">
@@ -410,24 +415,26 @@
     </div>
     <div class="blue-row"></div>
     <div class="bottom">
-        <div class="flex">
-            <div class="bottom-column-one">
-                <div class="bottom-column-text">通信地址：北京市西城区南礼士路头条三号</div>
-                <div>客服邮箱：info@ccpitbj.org</div>
+        <div class="bottom-content">
+            <div class="flex">
+                <div class="bottom-column-one">
+                    <div class="bottom-column-text">通信地址：北京市西城区南礼士路头条三号</div>
+                    <div>客服邮箱：info@ccpitbj.org</div>
+                </div>
+                <div class="bottom-column-two">
+                    <div class="bottom-column-text">传真：010-68058683</div>
+                    <div>邮编：100045</div>
+                </div>
             </div>
-            <div class="bottom-column-two">
-                <div class="bottom-column-text">传真：010-68058683</div>
-                <div>邮编：100045</div>
-            </div>
-        </div>
-        <div class="flex">
-            <div class="bottom-column-three">
-                <div class="qrcode-1"></div>
-                <div style="text-align: center;">官方微信</div>
-            </div>
-            <div class="bottom-column-four">
-                <div class="qrcode-2"></div>
-                <div style="text-align: center;">官方微博</div>
+            <div class="flex">
+                <div class="bottom-column-three">
+                    <div class="qrcode-1"></div>
+                    <div style="text-align: center;">官方微信</div>
+                </div>
+                <div class="bottom-column-four">
+                    <div class="qrcode-2"></div>
+                    <div style="text-align: center;">官方微博</div>
+                </div>
             </div>
         </div>
     </div>
@@ -643,6 +650,8 @@
         aspect-ratio: 1920 / 400;
         background: url("./assets/head-background@2x.png");
         background-size: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     @media (max-width: 600px) {
@@ -652,12 +661,35 @@
         }
     }
 
+    .header-content {
+        width: 1200px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    @media (max-width: 1200px) {
+        .header-content {
+            width: 100%;
+        }
+    }
+
     .header-left {
         position: absolute;
         top: 26px;
-        left: 360px;
         display: flex;
         align-items: center;
+    }
+
+    @media (max-width: 1200px) {
+        .header-left {
+            left: 20px;
+        }
+    }
+
+    @media (max-width: 530px) {
+        .header-left {
+            top: 10px;
+        }
     }
 
     .header-text {
@@ -675,9 +707,22 @@
     .header-right {
         position: absolute;
         top: 26px;
-        right: 360px;
+        right: 0;
         display: flex;
         align-items: center;
+    }
+
+    @media (max-width: 1200px) {
+        .header-right {
+            right: 20px;
+        }
+    }
+
+    @media (max-width: 530px) {
+        .header-right {
+            top: unset;
+            bottom: 10px;
+        }
     }
 
     .search-input {
@@ -687,6 +732,12 @@
         box-sizing: border-box;
         border-radius: 0 0 5px 5px;
         border: 1px solid #DEE0E5;
+    }
+
+    @media (max-width: 660px) {
+        .search-input {
+            width: 160px;
+        }
     }
 
     .search-button {
@@ -703,14 +754,19 @@
         cursor: pointer;
     }
 
+    @media (max-width: 560px) {
+        .search-button {
+            margin-right: 10px;
+        }
+    }
+
     .tab {
         width: 100%;
         height: 70px;
-        padding: 0 360px;
         box-sizing: border-box;
         background: #1A5BBE;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
     }
 
     @media (max-width: 1200px) {
@@ -719,8 +775,20 @@
         }
     }
 
+    .tab-title-content {
+        width: 1200px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    @media (max-width: 1200px) {
+        .tab-title-content {
+            width: 100%;
+        }
+    }
+
     .tab-title-item {
-        width: 80px;
+        min-width: 80px;
         border-bottom: 6px solid transparent;
         color: #FFFFFF;
         font-size: 20px;
@@ -733,7 +801,7 @@
 
     @media (max-width: 480px) {
         .tab-title-item {
-            width: 60px;
+            min-width: 60px;
             font-size: 15px;
         }
     }
@@ -799,10 +867,12 @@
     }
 
     .my-slides {
+        height: 100%;
         display: none;
     }
 
     .my-slides.active {
+        height: 100%;
         display: block;
     }
 
@@ -836,7 +906,7 @@
         display: flex;
         flex-direction: column;
     }
-    
+
     @media (max-width: 1200px) {
         .slider-right {
             width: 100%;
@@ -918,7 +988,7 @@
         }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 402px) {
         li span:first-child {
             width: 260px;
         }
@@ -963,7 +1033,7 @@
         display: flex;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1220px) {
         .service {
             width: 100%;
             flex-direction: column;
@@ -973,19 +1043,31 @@
 
     .service-left {
         margin-right: 27px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1220px) {
         .service-left {
+            width: 100%;
             margin-right: 0;
             margin-bottom: 20px;
         }
     }
 
     .service-left-title {
+        width: 100%;
         margin-bottom: 23px;
         display: flex;
+        justify-content: flex-start;
         align-items: center;
+    }
+
+    @media (max-width: 1220px) {
+        .service-left-title {
+            justify-content: center;
+        }
     }
 
     .service-left-title-item {
@@ -998,7 +1080,7 @@
         cursor: pointer;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1220px) {
         .service-left-title-item {
             width: 100px;
             font-size: 14px;
@@ -1014,7 +1096,7 @@
         color: #FFFFFF;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1220px) {
         .service-left-title-item-active {
             width: 100px;
             font-size: 14px;
@@ -1023,8 +1105,7 @@
 
     .service-left-content {
         width: 780px;
-        min-height: 216px;
-        padding: 20px;
+        padding: 20px 20px 0 20px;
         box-sizing: border-box;
         background: #E9F3FF;
     }
@@ -1038,6 +1119,7 @@
     .service-left-content-flex {
         margin-right: -20px;
         display: flex;
+        justify-content: space-between;
         flex-wrap: wrap;
     }
 
@@ -1111,7 +1193,9 @@
     }
 
     .international-contact {
+        margin-bottom: 10px;
         display: flex;
+        align-items: center;
     }
 
     @media (max-width: 820px) {
@@ -1161,7 +1245,7 @@
 
     .service-left-tab4-content-item {
         width: 233px;
-        height: 157px;
+        height: 155px;
         padding: 26px 5px 27px 19px;
         margin-bottom: 20px;
         box-sizing: border-box;
@@ -1217,14 +1301,14 @@
 
     .service-left-slideshow-container {
         width: 100%;
-        min-height: 258px;
+        max-height: 350px;
         aspect-ratio: 585 / 440;
+        padding-bottom: 20px;
         box-sizing: border-box;
         position: relative;
     }
 
     .service-left-slideshow-container img {
-        width: 100%;
         height: 100%;
         object-fit: contain;
     }
@@ -1282,6 +1366,7 @@
     }
 
     .service-right-content {
+        margin-bottom: -16px;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
@@ -1349,19 +1434,31 @@
 
     .banner-area {
         margin-right: -20px;
-        margin-bottom: 22px;
+        margin-bottom: 2px;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
     }
 
+    @media (max-width: 1220px) {
+        .banner-area {
+            width: 100%;
+        }
+    }
+
     .banner {
         width: 285px;
-        height: 99px;
+        aspect-ratio: 285 / 99;
         margin-right: 20px;
         margin-bottom: 20px;
         background: #6AA9EC;
         cursor: pointer;
+    }
+
+    @media (max-width: 650px) {
+        .banner {
+            width: calc((100% - 44px) / 2);
+        }
     }
 
     .message-public-row {
@@ -1369,7 +1466,7 @@
         display: flex;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1220px) {
         .message-public-row {
             flex-direction: column;
         }
@@ -1380,9 +1477,16 @@
         margin-right: 31px;
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1220px) {
         .message-public {
             margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 620px) {
+        .message-public {
+            width: 100%;
+            ;
         }
     }
 
@@ -1404,6 +1508,7 @@
     .message-public-item {
         width: 188px;
         height: 74px;
+        margin-bottom: 10px;
         padding: 20px 57px 21px 27px;
         box-sizing: border-box;
         background: #F2F2F2;
@@ -1411,8 +1516,16 @@
         display: flex;
     }
 
-    .message-public-item:first-child {
-        margin-bottom: 10px;
+    @media (max-width: 420px) {
+        .message-public-item {
+            zoom: 0.9;
+        }
+    }
+
+    @media (max-width: 362px) {
+        .message-public-item {
+            zoom: 0.8;
+        }
     }
 
     .message-public-item-icon {
@@ -1466,6 +1579,13 @@
         width: 585px;
     }
 
+    @media (max-width: 620px) {
+        .party-build {
+            width: 100%;
+            ;
+        }
+    }
+
     .party-build-title {
         margin-bottom: 15px;
     }
@@ -1480,9 +1600,22 @@
         display: flex;
     }
 
+    @media (max-width: 1220px) {
+        .media-attention-row {
+            flex-direction: column;
+        }
+    }
+
     .media-attention {
         width: 585px;
         margin-right: 25px;
+    }
+
+    @media (max-width: 620px) {
+        .media-attention {
+            width: 100%;
+            ;
+        }
     }
 
     .media-attention-title {
@@ -1498,6 +1631,12 @@
         width: 585px;
     }
 
+    @media (max-width: 620px) {
+        .video-area {
+            width: 100%;
+        }
+    }
+
     .video-area-title {
         margin-bottom: 12px;
     }
@@ -1510,6 +1649,7 @@
     .video-area-content {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .video-area-content video {
@@ -1519,21 +1659,53 @@
         cursor: pointer;
     }
 
+    @media (max-width: 620px) {
+        .video-area-content video {
+            width: 100%;
+        }
+
+        .video-area-content video:first-child {
+            margin-bottom: 10px;
+        }
+    }
+
     .banner-area-two {
         margin-right: -20px;
-        margin-bottom: 29px;
+        margin-bottom: 9px;
         display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 1220px) {
+        .banner-area-two {
+            width: 100%;
+        }
     }
 
     .bottom-button {
-        margin-bottom: 20px;
+        margin-right: -40px;
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 1220px) {
+        .bottom-button {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 664px) {
+        .bottom-button {
+            justify-content: center;
+        }
     }
 
     .bottom-button-item {
         width: 270px;
         height: 48px;
+        margin-bottom: 20px;
         margin-right: 40px;
         background: #FFFFFF;
         box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.36);
@@ -1547,10 +1719,6 @@
         cursor: pointer;
     }
 
-    .bottom-button-item:last-child {
-        margin-right: 0;
-    }
-
     .blue-row {
         width: 100%;
         height: 8px;
@@ -1560,7 +1728,6 @@
     .bottom {
         width: 100%;
         height: 199px;
-        padding: 0 360px;
         box-sizing: border-box;
         background: #0059B5;
         color: #FFFFFF;
@@ -1568,8 +1735,37 @@
         line-height: 21px;
         position: relative;
         display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (max-width: 900px) {
+        .bottom {
+            height: unset;
+            padding: 20px 0;
+        }
+    }
+
+    .bottom-content {
+        width: 1200px;
+        display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    @media (max-width: 1220px) {
+        .bottom-content {
+            width: 100%;
+            padding: 0 20px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .bottom-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     .bottom-column {
@@ -1579,6 +1775,18 @@
 
     .bottom-column-one {
         margin-right: 114px;
+    }
+
+    @media (max-width: 900px) {
+        .bottom-column-one {
+            margin-right: 57px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .bottom-column-one {
+            margin-right: 20px;
+        }
     }
 
     .bottom-column-three {
@@ -1602,12 +1810,24 @@
         background-size: 100%;
     }
 
+    @media (max-width: 900px) {
+        .qrcode-1 {
+            margin-top: 20px;
+        }
+    }
+
     .qrcode-2 {
         width: 90px;
         height: 90px;
         margin-bottom: 12px;
         background: #FFFFFF;
         background-size: 100%;
+    }
+
+    @media (max-width: 900px) {
+        .qrcode-2 {
+            margin-top: 20px;
+        }
     }
 </style>
 
